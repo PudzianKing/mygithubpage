@@ -86,25 +86,25 @@
         }
         return "";
     }
-    function checkCookie(name) {
+    function checkCookie(name,obj) {
         var value = getCookie(name);
         if (value != "") {
             gifts=parseInt(value);
         }
         else {
-          gifts=0;
+          obj=0;
         }
     }
 
     function init() {
-      checkCookie("gifts");
-      checkCookie("gps");
-      checkCookie("number_u1");
-      checkCookie("number_u2");
-      checkCookie("number_u3");
-      checkCookie("price_u1");
-      checkCookie("price_u2");
-      checkCookie("price_u3");
+      checkCookie("gifts",gifts);
+      checkCookie("gps",gps);
+      checkCookie("number_u1",number_u1);
+      checkCookie("number_u2",number_u2);
+      checkCookie("number_u3",number_u3);
+      checkCookie("price_u1",price_u1);
+      checkCookie("price_u2",price_u2);
+      checkCookie("price_u3",price_u3);
 
       document.getElementById("number_u1").innerHTML = number_u1;
       document.getElementById("price_u1").innerHTML = price_u1;
