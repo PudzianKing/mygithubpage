@@ -98,7 +98,7 @@
 
     function init() {
       checkCookie("gifts",gifts);
-      checkCookie("gps",gps);
+      /*checkCookie("gps",gps);
       checkCookie("number_u1",number_u1);
       checkCookie("number_u2",number_u2);
       checkCookie("number_u3",number_u3);
@@ -112,7 +112,7 @@
       document.getElementById("price_u2").innerHTML = price_u2;
       document.getElementById("number_u3").innerHTML = number_u3;
       document.getElementById("price_u3").innerHTML = price_u3;
-      document.getElementById("gps").innerHTML = gps;
+      document.getElementById("gps").innerHTML = gps;*/
       document.getElementById("gifts").innerHTML = gifts;
       start();
     }
@@ -124,13 +124,13 @@
       document.getElementById("gifts").innerHTML = gifts;
       if(bcl<=0){
         setCookie("gifts",gifts.toString(),60);
-        setCookie("gps",gps.toString(),60);
+        /*setCookie("gps",gps.toString(),60);
         setCookie("number_u1",number_u1.toString(),60);
         setCookie("number_u2",number_u2.toString(),60);
         setCookie("number_u3",number_u3.toString(),60);
         setCookie("price_u1",number_u1.toString(),60);
         setCookie("price_u2",number_u2.toString(),60);
-        setCookie("price_u3",number_u3.toString(),60);
+        setCookie("price_u3",number_u3.toString(),60);*/
         bcl=10;
       }
       document.getElementById("bcl").innerHTML = bcl;
