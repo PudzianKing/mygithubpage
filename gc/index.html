@@ -97,7 +97,6 @@
     }
 
     function init() {
-      console.log(getCookie("save_gc"));
       document.getElementById("number_u1").innerHTML = number_u1;
       document.getElementById("price_u1").innerHTML = price_u1;
       document.getElementById("number_u2").innerHTML = number_u2;
@@ -116,7 +115,6 @@
       bcl++;
       document.getElementById("gifts").innerHTML = gifts;
       if(bcl>10){
-        console.log("save_gc",gifts,1);
         setCookie("save_gc",gifts,1);
         bcl=0;
       }
