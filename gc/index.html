@@ -123,14 +123,14 @@
       bcl--;
       document.getElementById("gifts").innerHTML = gifts;
       if(bcl<=0){
-        setCookie("gifts",gifts,60);
-        setCookie("gps",gps,60);
-        setCookie("number_u1",number_u1,60);
-        setCookie("number_u2",number_u2,60);
-        setCookie("number_u3",number_u3,60);
-        setCookie("price_u1",number_u1,60);
-        setCookie("price_u2",number_u2,60);
-        setCookie("price_u3",number_u3,60);
+        setCookie("gifts",gifts.toString(),60);
+        setCookie("gps",gps.toString(),60);
+        setCookie("number_u1",number_u1.toString(),60);
+        setCookie("number_u2",number_u2.toString(),60);
+        setCookie("number_u3",number_u3.toString(),60);
+        setCookie("price_u1",number_u1.toString(),60);
+        setCookie("price_u2",number_u2.toString(),60);
+        setCookie("price_u3",number_u3.toString(),60);
         bcl=10;
       }
       document.getElementById("bcl").innerHTML = bcl;
