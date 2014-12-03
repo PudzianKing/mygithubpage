@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gift Clicker</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Gift Clicker">
+    <meta name="author" content="Pudzian">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</head>
+
+<body onload="init()">
+    <script type="text/javascript">
+    var gifts = 0;
+    var number_u1 = 0;
+    var price_u1 = 10;
+    var number_u2 = 0;
+    var price_u2 = 50;
+    var number_u3 = 0;
+    var price_u3 = 100;
+    var gps = 0;
+    var bcl=0;
+
+    function ongift() {
+        gifts += 1;
+        document.getElementById("gifts").innerHTML = gifts;
+    };
+    function onupgrade_1() {
+        if(gifts-price_u1>=0){
+          number_u1 += 1;
+          gps+=1;
+          gifts-= price_u1;
+          price_u1 += price_u1*0.1;
+          price_u1 = Math.round(price_u1);
+          document.getElementById("number_u1").innerHTML = number_u1;
+          document.getElementById("price_u1").innerHTML = price_u1;
+          document.getElementById("gps").innerHTML = gps;
+          document.getElementById("gifts").innerHTML = gifts;
+        }
+    };
+    function onupgrade_2() {
+        if(gifts-price_u2>=0){
+          number_u2 += 1;
+          gps+=4;
+          gifts-= price_u2;
+          price_u2 += price_u2*0.1;
+          price_u2 = Math.round(price_u2);
+          document.getElementById("number_u2").innerHTML = number_u2;
+          document.getElementById("price_u2").innerHTML = price_u2;
+          document.getElementById("gps").innerHTML = gps;
+          document.getElementById("gifts").innerHTML = gifts;
+        }
+    };
+
+    function onupgrade_3() {
+      if(gifts-price_u3>=0){
+        number_u3 += 1;
+        gps+=8;
+        gifts-= price_u3;
+        price_u3 += price_u3*0.1;
+        price_u3 = Math.round(price_u3);
+        document.getElementById("number_u3").innerHTML = number_u3;
+        document.getElementById("price_u3").innerHTML = price_u3;
+        document.getElementById("gps").innerHTML = gps;
+        document.getElementById("gifts").innerHTML = gifts;
+      }
+    };
+
+    function setCookie(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+        var expires = "expires="+d.toUTCString();
+        document.cookie = cname + "=" + cvalue + "; " + expires;
+    }
+
+    function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0; i<ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1);
+            if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
+        }
+        return "";
+    }
+    function checkCookie() {
+        var user = getCookie("save_gc");
+        if (user != "") {
+            gifts=parseInt(user);
+        }
+        else {
+          gifts=0;
+        }
+    }
+
+    function init() {
+      console.log(getCookie("save_gc"));
+
+      checkCookie();
+      start();
+    }
+
+    function start() {
+      // your code here
+      gifts += gps;
+      bcl++;
+      document.getElementById("gifts").innerHTML = gifts;
+      if(bcl>10){
+        console.log("save_gc",5,1);
+        setCookie("save_gc",5,1);
+        bcl=0;
+      }
+      setTimeout(start, 1000);
+    }
+    </script>
+
+    <div class="alert alert-info" role="alert"><h1 style="text-align: center;">PRE-ALPHA Version 0.000023</h1></div>
+    <h1 style="text-align: center;">Gift Clicker</h1>
+    <div class="alert alert-danger" role="alert" style="text-align: center;">Unstable and probably Buged</div>
+
+      <table width="100%" >
+        <tr>
+          <td width="0%">
+          <td width="40%" style="text-align: center;">
+            <h1>Gifts: <a id="gifts">0</a></h1>
+            <img src="Gift.png" onClick="ongift()">
+            <h1>Gifts per second: <a id="gps">0</a></h1>
+          </td>
+          <td width="30%">
+          </td>
+          <td width="30%">
+            <h3 onClick="onupgrade_1()">Auto-Cursor: <a id="number_u1">0</a>&emsp;<img src="cursor.png" width="10%" >&emsp;<a id="price_u1">10</a> Gifts</h3>
+            <h3 onClick="onupgrade_2()">Elf Helper: <a id="number_u2">0</a>&emsp;<img src="elf.png" width="14%" >&emsp;<a id="price_u2">50</a> Gifts</h3>
+            <h3 onClick="onupgrade_3()">Gift Tree: <a id="number_u3">0</a>&emsp;<img src="tree.png" width="14%" >&emsp;<a id="price_u3">100</a> Gifts</h3>
+          </td>
+          <td width="0%"></td>
+        </tr>
+
+      </table>
+    <div class="alert alert-danger" role="alert" style="text-align: center;">Unstable and probably Buged</div>
+</body>
+</html>
