@@ -86,10 +86,10 @@
         }
         return "";
     }
-    function checkCookie() {
-        var user = getCookie("save_gc");
-        if (user != "") {
-            gifts=parseInt(user);
+    function checkCookie(name) {
+        var value = getCookie(name);
+        if (value != "") {
+            gifts=parseInt(value);
         }
         else {
           gifts=0;
@@ -97,6 +97,15 @@
     }
 
     function init() {
+      checkCookie("gifts");
+      checkCookie("gps");
+      checkCookie("number_u1");
+      checkCookie("number_u2");
+      checkCookie("number_u3");
+      checkCookie("price_u1");
+      checkCookie("price_u2");
+      checkCookie("price_u3");
+
       document.getElementById("number_u1").innerHTML = number_u1;
       document.getElementById("price_u1").innerHTML = price_u1;
       document.getElementById("number_u2").innerHTML = number_u2;
@@ -105,24 +114,33 @@
       document.getElementById("price_u3").innerHTML = price_u3;
       document.getElementById("gps").innerHTML = gps;
       document.getElementById("gifts").innerHTML = gifts;
-      checkCookie();
       start();
     }
 
     function start() {
       // your code here
       gifts += gps;
-      bcl++;
+      bcl--;
       document.getElementById("gifts").innerHTML = gifts;
-      if(bcl>10){
-        setCookie("save_gc",gifts,1);
-        bcl=0;
+      if(bcl<=0){
+        setCookie("gifts",gifts,60);
+        setCookie("gps",gps,60);
+        setCookie("number_u1",number_u1,60);
+        setCookie("number_u2",number_u2,60);
+        setCookie("number_u3",number_u3,60);
+        setCookie("price_u1",number_u1,60);
+        setCookie("price_u2",number_u2,60);
+        setCookie("price_u3",number_u3,60);
+        bcl=10;
       }
+      document.getElementById("bcl").innerHTML = bcl;
       setTimeout(start, 1000);
     }
     </script>
 
-    <div class="alert alert-info" role="alert"><h1 style="text-align: center;">PRE-ALPHA Version 0.000023</h1></div>
+    <div class="alert alert-info" role="alert" style="text-align: center;"><h1>PRE-ALPHA Version 0.000023</h1>
+      Next auto saves in <a id="bcl">0</a>
+    </div>
     <h1 style="text-align: center;">Gift Clicker</h1>
     <div class="alert alert-danger" role="alert" style="text-align: center;">Unstable and probably Buged</div>
 
