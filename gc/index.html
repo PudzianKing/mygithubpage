@@ -98,7 +98,14 @@
 
     function init() {
       console.log(getCookie("save_gc"));
-
+      document.getElementById("number_u1").innerHTML = number_u1;
+      document.getElementById("price_u1").innerHTML = price_u1;
+      document.getElementById("number_u2").innerHTML = number_u2;
+      document.getElementById("price_u2").innerHTML = price_u2;
+      document.getElementById("number_u3").innerHTML = number_u3;
+      document.getElementById("price_u3").innerHTML = price_u3;
+      document.getElementById("gps").innerHTML = gps;
+      document.getElementById("gifts").innerHTML = gifts;
       checkCookie();
       start();
     }
@@ -109,8 +116,8 @@
       bcl++;
       document.getElementById("gifts").innerHTML = gifts;
       if(bcl>10){
-        console.log("save_gc",5,1);
-        setCookie("save_gc",5,1);
+        console.log("save_gc",gifts,1);
+        setCookie("save_gc",gifts,1);
         bcl=0;
       }
       setTimeout(start, 1000);
